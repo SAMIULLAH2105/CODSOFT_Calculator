@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Signika+Negative:wght@700&display=swap" rel="stylesheet">
+
+    
+    <style>
+        *{
+            margin: 0px;
+            font-family: 'Signika Negative', sans-serif;
+        }
+        body{
+            /* background: url(images/background.jpg); */
+            background-color: black;
+            background-size: contain;
+
+            
+        }
+        #navbar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0px;
+            background-color:rgb(85, 71, 89) ;
+            color: rgb(255, 255, 255);
+            
+        }
+        #navbar h1{
+            font-size: 40px;
+        }
+        .container{
+            width: 450px;
+            height: 480px;
+            padding: 10px auto;
+            margin:45px auto;
+            background-color: rgb(52, 16, 63);
+            border: 7px solid rgb(207, 185, 211);
+            display: grid;
+            grid-template-columns: 100px 100px 100px 100px ;
+            grid-template-rows: repeat(7,1fr);
+            /* grid-gap: 20px; */
+            justify-content: center;
+            /* border: 3px solid rgb(0, 0, 0); */
+            border-radius: 29px;
+            box-shadow: 0px 20px 200px 10px rgb(137, 134, 175);
+            
+        }
+        .item{
+            margin:13px 4px;
+            background-color: rgb(113, 33, 148);
+            color: rgb(246, 248, 251);
+            padding: 10px 5px;
+            border-radius: 12px;
+            font-size: 20px;
+            
+        }
+        #item-1{
+            background-color: black;
+            color: aliceblue;
+            padding: 0px 30px;
+            text-align: right;
+            font-size: 30px;
+            margin: 15px 0px;
+            height: 80px;
+            grid-column: 1/span 4;
+            border-radius: 13px;
+        }
+        #item-20{
+            grid-column-start: 3;
+            grid-column-end: 5;
+        }
+        
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <h1>CALCULATOR</h1>
+    </nav>
+    <div class="container">
+        <input  id="item-1"  type="text" name="display">
+    
+        <input class="item" id="item-2" type="button" value="AC" ">
+        <input class="item" id="item-3" type="button" value="+/-">
+        <input class="item" id="item-4" type="button" value="%">
+        <input class="item" id="item-5" type="button" value="/">
+        <input class="item" id="item-6" type="button" value="7" >
+        <input class="item" id="item-7" type="button" value="8">
+        <input class="item" id="item-8" type="button" value="9">
+        <input class="item" id="item-9" type="button" value="*">
+        <input class="item" id="item-10" type="button" value="4">
+        <input class="item" id="item-11" type="button" value="5">
+        <input class="item" id="item-12" type="button" value="6">
+        <input class="item" id="item-13" type="button" value="-">
+        <input class="item" id="item-14" type="button" value="1">
+        <input class="item" id="item-15" type="button" value="2">
+        <input class="item" id="item-16" type="button" value="3">
+        <input class="item" id="item-17" type="button" value="+">
+        <input class="item" id="item-18" type="button" value="0">
+        <input class="item" id="item-19" type="button" value=".">
+        <input class="item" id="item-20" type="button" value="=">
+    </div>
+
+    <script>
+        // Get the display element
+        const display = document.getElementById("item-1");
+
+        // Get all the number and operator buttons
+        const buttons = document.querySelectorAll(".item");
+
+        // Add click event listeners to the buttons
+        buttons.forEach(button => {
+            button.addEventListener("click", () => {
+                // Handle button click
+                const value = button.value;
+
+                if (value === "=") {
+                    // Perform calculation when "=" is clicked
+                    try {
+                        display.value = eval(display.value);
+                    } catch (error) {
+                        display.value = "Error";
+                    }
+                } else if (value === "AC") {
+                    // Clear the display when "AC" is clicked
+                    display.value = "";
+                } else {
+                    // Append the clicked value to the display
+                    display.value += value;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
